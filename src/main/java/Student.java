@@ -52,8 +52,15 @@ public class Student {
      * @return the name of the subject with the current highest score (a String).
      */
     public String bestSubject() {
-
-        return null;
+        int bestGrade = 0;
+        String bestSubject = "";
+        for (int i = 0; i < subjects.size(); i++){
+            if (subjects.get(i).getCurrentGrade() > bestGrade){
+                bestGrade = subjects.get(i).getCurrentGrade();
+                bestSubject = subjects.get(i).getName();
+            }
+        }
+        return bestSubject;
 
     }
 
@@ -62,8 +69,13 @@ public class Student {
      * @return the students' average grade (a double).
      */
     public double averageGrade() {
-
-        return 0.0;
+        double total = 0.0;
+        int classCount = subjects.size();
+        for (int i = 0; i < subjects.size(); i++){
+            total += subjects.get(i).getCurrentGrade();
+        }
+        double average = total / classCount;
+        return average;
 
     }
 
